@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Next Purchase Nudge — Dhaga & Co.</title>
+<style>
+  :root {
+    --bg: #0b1220; --panel: #121a2b; --border: #24304a; --text: #e8ecf4;
+    --muted: #93a1bd; --accent: #ff7a59; --ok: #37c98b; --warn: #f2b84b; --err: #ef5a6f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 24px; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  header { position: relative; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  p.sub { color: var(--muted); margin-top: 0; }
+  .panel {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px; margin-bottom: 16px;
+  }
+  label { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; }
+  select, button, input[type="number"] {
+    font-size: 1rem; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border);
+  }
+  select, input[type="number"] { background: #0e1626; color: var(--text); width: 100%; margin-bottom: 12px; }
+  button {
+    background: var(--accent); color: #1a0f0a; font-weight: 600; border: none; cursor: pointer;
+  }
+  button.secondary { background: transparent; color: var(--text); border: 1px solid var(--border); font-weight: 500; }
+  button:disabled { opacity: 0.5; cursor: wait; }
+
+  /* Settings tucked into a corner icon, not competing with the main flow */
+  #settingsToggle {
+    flex: 0 0 auto; width: 38px; height: 38px; padding: 0; border-radius: 10px;
+    background: var(--panel); border: 1px solid var(--border); color: var(--muted);
+    font-size: 1.05rem; display: flex; align-items: center; justify-content: center;
+  }
+  #settingsToggle:hover { color: var(--text); border-color: var(--muted); }
+  #settingsPopover {
+    display: none; position: absolute; top: 46px; right: 0; z-index: 10;
+    width: 320px; max-width: calc(100vw - 48px);
+    background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px; box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+  }
+  #settingsPopover.open { display: block; }
+  #settingsPopover h2 { font-size: 0.9rem; margin: 0 0 14px; color: var(--text); }
+
+  .status { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
+  .status.ok { background: rgba(55,201,139,0.15); color: var(--ok); }
+  .status.insufficient_data, .status.needs_human_review { background: rgba(242,184,75,0.15); color: var(--warn); }
+  .status.error { background: rgba(239,90,111,0.15); color: var(--err); }
+  .pill { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.78rem; background: rgba(147,161,189,0.15); color: var(--muted); margin-left: 6px; }
+  .sku { border: 1px solid var(--border); border-radius: 8px; padding: 10px; margin-bottom: 8px; font-size: 0.9rem; }
+  .message-box { background: #0e1626; border: 1px solid var(--border); border-radius: 8px; padding: 14px; white-space: pre-wrap; }
+  .reasons { color: var(--muted); font-size: 0.85rem; }
+  .cost { color: var(--muted); font-size: 0.8rem; margin-top: 10px; }
+  .field-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .field-row input[type="checkbox"] { width: 18px; height: 18px; }
+  .field-help { color: var(--muted); font-size: 0.76rem; margin: 0 0 14px; line-height: 1.4; }
+  .slider-value { color: var(--text); font-weight: 600; font-size: 0.85rem; }
+  input[type="range"] { width: 100%; margin: 6px 0; accent-color: var(--accent); }
+  pre { white-space: pre-wrap; font-size: 0.8rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Next Purchase Nudge — Dhaga & Co.</h1>
+      <p class="sub">Pick a customer, generate a personalized re-engagement recommendation.</p>
+    </div>
+    <button id="settingsToggle" type="button" title="Settings" aria-label="Settings">⚙</button>
+
+    <div id="settingsPopover">
+      <h2>Models &amp; evaluator strictness</h2>
+
+      <label for="modelA">Model A — bulk steps</label>
+      <select id="modelA"></select>
+
+      <label for="modelB">Model B — customer-facing steps</label>
+      <select id="modelB"></select>
+      <p class="field-help" id="modelBHelp"></p>
+
+      <label for="threshold">Evaluator threshold — <span class="slider-value" id="thresholdValue">0.70</span></label>
+      <input type="range" id="threshold" min="0" max="1" step="0.05" value="0.7" />
+      <p class="field-help" id="thresholdHelp"></p>
+
+      <div class="field-row">
+        <input type="checkbox" id="criticEnabled" checked />
+        <label for="criticEnabled" style="margin:0;">Critic loop enabled</label>
+      </div>
+      <p class="field-help" id="criticHelp"></p>
+
+      <label for="maxRevisions">Max revision rounds</label>
+      <input type="number" id="maxRevisions" min="0" max="4" value="2" />
+      <p class="field-help" id="revisionsHelp"></p>
+
+      <button class="secondary" id="applySettings" type="button" style="width:100%;">Apply</button>
+      <p class="field-help" style="margin-top:8px; margin-bottom:0;">Takes effect on the next run — nothing to restart.</p>
+    </div>
+  </header>
+
+  <div class="panel">
+    <label for="customer">Customer</label>
+    <select id="customer"></select>
+    <button id="run">Generate recommendation</button>
+  </div>
+
+  <div class="panel" id="result" style="display:none;"></div>
+</div>
+
+<script>
+const customerSelect = document.getElementById('customer');
+const modelASelect = document.getElementById('modelA');
+const modelBSelect = document.getElementById('modelB');
+const modelBHelp = document.getElementById('modelBHelp');
+const thresholdInput = document.getElementById('threshold');
+const thresholdValue = document.getElementById('thresholdValue');
+const criticCheckbox = document.getElementById('criticEnabled');
+const maxRevisionsInput = document.getElementById('maxRevisions');
+const runBtn = document.getElementById('run');
+const applyBtn = document.getElementById('applySettings');
+const resultPanel = document.getElementById('result');
+const settingsToggle = document.getElementById('settingsToggle');
+const settingsPopover = document.getElementById('settingsPopover');
+
+let currentSettings = null; // populated from /api/settings, then editable
+let settingsCatalogue = null;
+
+settingsToggle.addEventListener('click', (e) => {
+  e.stopPropagation();
+  settingsPopover.classList.toggle('open');
+});
+document.addEventListener('click', (e) => {
+  if (!settingsPopover.contains(e.target) && e.target !== settingsToggle) {
+    settingsPopover.classList.remove('open');
+  }
+});
+
+async function loadCustomers() {
+  try {
+    const res = await fetch('/api/customers');
+    const rows = await res.json();
+    customerSelect.innerHTML = rows.map(r => `<option value="${r.customer_id}">${r.customer_id} (${r.city_tier})</option>`).join('');
+  } catch (e) {
+    customerSelect.innerHTML = '<option value="">Could not load customers</option>';
+  }
+}
+
+function updateModelBHelp() {
+  if (!settingsCatalogue) return;
+  modelBHelp.textContent = modelBSelect.value === 'auto'
+    ? settingsCatalogue.help.auto_model_b
+    : 'Fixed at this model for every message.';
+}
+
+async function loadSettingsCatalogue() {
+  try {
+    const res = await fetch('/api/settings');
+    const cat = await res.json();
+    settingsCatalogue = cat;
+    modelASelect.innerHTML = cat.allowed_models.map(m => `<option value="${m.id}">${m.label}</option>`).join('');
+    modelBSelect.innerHTML = cat.allowed_models_b.map(m => `<option value="${m.id}">${m.label}</option>`).join('');
+    modelASelect.value = cat.defaults.model_a;
+    modelBSelect.value = cat.defaults.model_b;
+    thresholdInput.value = cat.defaults.evaluator_threshold;
+    thresholdValue.textContent = Number(cat.defaults.evaluator_threshold).toFixed(2);
+    criticCheckbox.checked = cat.defaults.critic_enabled;
+    maxRevisionsInput.value = cat.defaults.max_revision_rounds;
+    document.getElementById('thresholdHelp').textContent = cat.help.evaluator_threshold;
+    document.getElementById('criticHelp').textContent = cat.help.critic_enabled;
+    document.getElementById('revisionsHelp').textContent = cat.help.max_revision_rounds;
+    updateModelBHelp();
+    currentSettings = { ...cat.defaults };
+  } catch (e) {
+    document.getElementById('thresholdHelp').textContent = 'Could not load settings from /api/settings.';
+  }
+}
+
+modelBSelect.addEventListener('change', updateModelBHelp);
+
+thresholdInput.addEventListener('input', () => {
+  thresholdValue.textContent = Number(thresholdInput.value).toFixed(2);
+});
+
+applyBtn.addEventListener('click', () => {
+  currentSettings = {
+    model_a: modelASelect.value,
+    model_b: modelBSelect.value,
+    evaluator_threshold: parseFloat(thresholdInput.value),
+    critic_enabled: criticCheckbox.checked,
+    max_revision_rounds: parseInt(maxRevisionsInput.value, 10),
+  };
+  applyBtn.textContent = 'Applied ✓';
+  setTimeout(() => { applyBtn.textContent = 'Apply'; settingsPopover.classList.remove('open'); }, 700);
+});
+
+function renderSkus(skus) {
+  if (!skus || !skus.length) return '';
+  return skus.map(s => `
+    <div class="sku">
+      <strong>${s.sku_id}</strong> — ${s.category}, ₹${s.price_inr}, ${s.colour} ${s.in_stock ? '' : '(out of stock)'}
+      <div class="reasons">${s.reason || ''}</div>
+    </div>`).join('');
+}
+
+function modelLabel(id) {
+  const found = (settingsCatalogue?.allowed_models_b || []).find(m => m.id === id);
+  return found ? found.label.split(' (')[0] : id;
+}
+
+function render(result) {
+  resultPanel.style.display = 'block';
+  const statusLabel = {
+    ok: 'Approved', insufficient_data: 'Insufficient data', needs_human_review: 'Needs human review', error: 'Error'
+  }[result.status] || result.status;
+
+  let html = `<span class="status ${result.status}">${statusLabel}</span>`;
+  if (result.model_b_used) {
+    html += `<span class="pill">Model used: ${modelLabel(result.model_b_used)}</span>`;
+  }
+  html += `<p><strong>Customer:</strong> ${result.customer_id} &nbsp; <strong>Persona:</strong> ${result.persona || '—'}</p>`;
+
+  if (result.status === 'ok' || result.status === 'needs_human_review') {
+    html += `<h3>Recommended products</h3>${renderSkus(result.recommended_skus)}`;
+    if (result.message) {
+      html += `<h3>Draft message (${result.message.channel})</h3><div class="message-box">${result.message.text}</div>`;
+    }
+    if (result.evaluation) {
+      html += `<p class="reasons">Evaluator score: ${result.evaluation.score} · approved: ${result.evaluation.approved}</p>`;
+    }
+  }
+
+  if (result.reasons && result.reasons.length) {
+    html += `<h3>Reasons</h3><p class="reasons">${result.reasons.join('<br>')}</p>`;
+  }
+
+  html += `<p class="cost">Estimated cost this run: $${(result.estimated_cost_usd || 0).toFixed(5)} · ${(result.model_calls || []).length} model call(s)</p>`;
+  resultPanel.innerHTML = html;
+}
+
+runBtn.addEventListener('click', async () => {
+  const customerId = customerSelect.value;
+  if (!customerId) return;
+  runBtn.disabled = true;
+  runBtn.textContent = 'Running…';
+  resultPanel.style.display = 'block';
+  resultPanel.innerHTML = '<p class="reasons">Running the pipeline — this calls two models across several steps and can take several seconds.</p>';
+  try {
+    const params = new URLSearchParams({ customer_id: customerId });
+    if (currentSettings) {
+      params.set('model_a', currentSettings.model_a);
+      params.set('model_b', currentSettings.model_b);
+      params.set('evaluator_threshold', currentSettings.evaluator_threshold);
+      params.set('critic_enabled', currentSettings.critic_enabled);
+      params.set('max_revision_rounds', currentSettings.max_revision_rounds);
+    }
+    const res = await fetch(`/api/recommend?${params.toString()}`);
+    const data = await res.json();
+    render(data);
+  } catch (e) {
+    resultPanel.innerHTML = `<span class="status error">Error</span><p>${e}</p>`;
+  } finally {
+    runBtn.disabled = false;
+    runBtn.textContent = 'Generate recommendation';
+  }
+});
+
+loadCustomers();
+loadSettingsCatalogue();
+</script>
+</body>
+</html>

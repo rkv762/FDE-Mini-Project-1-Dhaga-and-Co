@@ -1,0 +1,9 @@
+# Keep the deployed Python function bundle small — none of this is needed
+# to serve app.py in production.
+.venv
+tests
+scripts
+docs
+*.pdf
+data/generate_mock_data.py
+data/decision_log.jsonl
