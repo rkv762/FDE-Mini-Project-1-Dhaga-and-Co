@@ -1,0 +1,24 @@
+# Proprietary client-engagement brief materials — kept local only
+*.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node
+node_modules/
+dist/
+build/
+
+# Runtime-generated (not sample data)
+data/decision_log.jsonl
+
+# OS
+.DS_Store
+.vercel
+
+# Secrets — .env.example is a template and stays tracked
+.env
+.env.local
