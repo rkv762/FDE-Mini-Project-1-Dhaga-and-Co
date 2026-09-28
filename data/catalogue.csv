@@ -1,0 +1,151 @@
+sku_id,category,price_inr,colour_raw,fabric_free_text,description,in_stock
+SKU0001,kidswear,499,pink,cotton,"pink cotton t-shirt, everyday and occasion wear.",True
+SKU0002,womenswear,999,Red,Cotton blend,"Red Cotton blend dress, everyday and occasion wear.",True
+SKU0003,kidswear,499,Wine Red,crepe,"Wine Red crepe frock, everyday and occasion wear.",True
+SKU0004,mens,399,Grey,rayon,"Grey rayon t-shirt, everyday and occasion wear.",True
+SKU0005,womenswear,1499,Coal Black,Rayon,"Coal Black Rayon dress, everyday and occasion wear.",True
+SKU0006,mens,1499,Bright Red,Cotton blend,"Bright Red Cotton blend trousers, everyday and occasion wear.",True
+SKU0007,womenswear,1199,TEAL,chiffon,"TEAL chiffon lehenga, everyday and occasion wear.",True
+SKU0008,womenswear,499,WHITE,rayon,"WHITE rayon saree, everyday and occasion wear.",True
+SKU0009,mens,499,Light Peach,crepe,"Light Peach crepe t-shirt, everyday and occasion wear.",True
+SKU0010,womenswear,499,TEAL,cotton,"TEAL cotton saree, everyday and occasion wear.",True
+SKU0011,mens,1199,Lavender,Pure Cotton,"Lavender Pure Cotton t-shirt, everyday and occasion wear.",False
+SKU0012,mens,1199,Mustard,Rayon,"Mustard Rayon t-shirt, everyday and occasion wear.",True
+SKU0013,womenswear,499,Light Peach,georgette,"Light Peach georgette dress, everyday and occasion wear.",True
+SKU0014,mens,1199,Olive Green,poly cotton,"Olive Green poly cotton trousers, everyday and occasion wear.",False
+SKU0015,kidswear,1499,PINK,poly cotton,"PINK poly cotton t-shirt, everyday and occasion wear.",True
+SKU0016,kidswear,599,green,Cotton blend,"green Cotton blend frock, everyday and occasion wear.",True
+SKU0017,mens,399,white,Rayon,"white Rayon trousers, everyday and occasion wear.",True
+SKU0018,mens,399,blue,net,"blue net t-shirt, everyday and occasion wear.",True
+SKU0019,kidswear,999,Grey,Pure Cotton,"Grey Pure Cotton frock, everyday and occasion wear.",False
+SKU0020,womenswear,399,Jet Black,crepe,"Jet Black crepe saree, everyday and occasion wear.",True
+SKU0021,womenswear,499,Lavender,cotton,"Lavender cotton saree, everyday and occasion wear.",True
+SKU0022,mens,899,Lemon Yellow,crepe,"Lemon Yellow crepe t-shirt, everyday and occasion wear.",True
+SKU0023,kidswear,599,Sea Green,Cotton blend,"Sea Green Cotton blend shorts set, everyday and occasion wear.",True
+SKU0024,kidswear,699,Off-White,cotton,"Off-White cotton t-shirt, everyday and occasion wear.",True
+SKU0025,mens,799,dark navy,net,"dark navy net t-shirt, everyday and occasion wear.",True
+SKU0026,mens,699,purple,chiffon,"purple chiffon trousers, everyday and occasion wear.",True
+SKU0027,womenswear,699,red,poly cotton,"red poly cotton lehenga, everyday and occasion wear.",True
+SKU0028,womenswear,1199,dark navy,Rayon,"dark navy Rayon saree, everyday and occasion wear.",True
+SKU0029,mens,699,Wine Purple,Cotton blend,"Wine Purple Cotton blend t-shirt, everyday and occasion wear.",True
+SKU0030,womenswear,899,Teal,Pure Cotton,"Teal Pure Cotton kurti, everyday and occasion wear.",True
+SKU0031,kidswear,999,RED,georgette,"RED georgette frock, everyday and occasion wear.",True
+SKU0032,kidswear,599,PEACH,Cotton blend,"PEACH Cotton blend frock, everyday and occasion wear.",True
+SKU0033,mens,1199,peach,crepe,"peach crepe trousers, everyday and occasion wear.",True
+SKU0034,mens,499,Pink,cotton,"Pink cotton shirt, everyday and occasion wear.",True
+SKU0035,womenswear,799,Nvy Blu,rayon,"Nvy Blu rayon saree, everyday and occasion wear.",True
+SKU0036,mens,899,beige,cotton,"beige cotton t-shirt, everyday and occasion wear.",True
+SKU0037,mens,1499,Rani Pink,georgette,"Rani Pink georgette trousers, everyday and occasion wear.",True
+SKU0038,womenswear,1199,Baby Pink,georgette,"Baby Pink georgette kurti, everyday and occasion wear.",True
+SKU0039,kidswear,399,Teal,net,"Teal net frock, everyday and occasion wear.",True
+SKU0040,mens,1199,Peach,Cotton blend,"Peach Cotton blend trousers, everyday and occasion wear.",True
+SKU0041,womenswear,1499,YELLOW,net,"YELLOW net saree, everyday and occasion wear.",True
+SKU0042,mens,1199,Sunshine Yellow,rayon,"Sunshine Yellow rayon t-shirt, everyday and occasion wear.",True
+SKU0043,kidswear,999,Dark Yellow,rayon,"Dark Yellow rayon frock, everyday and occasion wear.",False
+SKU0044,mens,599,purple,Rayon,"purple Rayon shirt, everyday and occasion wear.",True
+SKU0045,kidswear,599,teal,rayon,"teal rayon t-shirt, everyday and occasion wear.",True
+SKU0046,kidswear,499,Bright Red,chiffon,"Bright Red chiffon t-shirt, everyday and occasion wear.",True
+SKU0047,kidswear,899,Peach,poly cotton,"Peach poly cotton shorts set, everyday and occasion wear.",True
+SKU0048,womenswear,799,Green,Cotton blend,"Green Cotton blend dress, everyday and occasion wear.",True
+SKU0049,kidswear,1499,YELLOW,georgette,"YELLOW georgette t-shirt, everyday and occasion wear.",True
+SKU0050,kidswear,599,mustard yellow,cotton,"mustard yellow cotton t-shirt, everyday and occasion wear.",True
+SKU0051,mens,699,mustard yellow,Cotton blend,"mustard yellow Cotton blend shirt, everyday and occasion wear.",False
+SKU0052,kidswear,599,Sand Beige,crepe,"Sand Beige crepe frock, everyday and occasion wear.",False
+SKU0053,kidswear,799,maroon,rayon,"maroon rayon frock, everyday and occasion wear.",True
+SKU0054,kidswear,399,white,chiffon,"white chiffon frock, everyday and occasion wear.",True
+SKU0055,mens,699,Rani Red,Pure Cotton,"Rani Red Pure Cotton trousers, everyday and occasion wear.",True
+SKU0056,kidswear,799,TEAL,net,"TEAL net t-shirt, everyday and occasion wear.",True
+SKU0057,mens,399,pink,chiffon,"pink chiffon trousers, everyday and occasion wear.",True
+SKU0058,mens,399,YELLOW,georgette,"YELLOW georgette trousers, everyday and occasion wear.",False
+SKU0059,kidswear,399,Mint Green,Rayon,"Mint Green Rayon t-shirt, everyday and occasion wear.",True
+SKU0060,womenswear,1499,Lemon Yellow,chiffon,"Lemon Yellow chiffon kurti, everyday and occasion wear.",True
+SKU0061,kidswear,999,White,chiffon,"White chiffon shorts set, everyday and occasion wear.",False
+SKU0062,womenswear,499,GREEN,cotton,"GREEN cotton kurti, everyday and occasion wear.",True
+SKU0063,mens,799,Wine,cotton,"Wine cotton trousers, everyday and occasion wear.",True
+SKU0064,mens,999,Blush Pink,crepe,"Blush Pink crepe t-shirt, everyday and occasion wear.",True
+SKU0065,mens,999,Pink,net,"Pink net trousers, everyday and occasion wear.",True
+SKU0066,mens,699,dark navy,crepe,"dark navy crepe trousers, everyday and occasion wear.",False
+SKU0067,kidswear,1499,BLACK,Pure Cotton,"BLACK Pure Cotton shorts set, everyday and occasion wear.",False
+SKU0068,mens,399,Olive Green,Rayon,"Olive Green Rayon trousers, everyday and occasion wear.",True
+SKU0069,mens,499,Dark Yellow,net,"Dark Yellow net shirt, everyday and occasion wear.",True
+SKU0070,kidswear,699,Mint Green,rayon,"Mint Green rayon t-shirt, everyday and occasion wear.",True
+SKU0071,womenswear,699,Sea Green,cotton,"Sea Green cotton dress, everyday and occasion wear.",False
+SKU0072,mens,599,Rust,crepe,"Rust crepe t-shirt, everyday and occasion wear.",False
+SKU0073,mens,1199,Blck,rayon,"Blck rayon t-shirt, everyday and occasion wear.",True
+SKU0074,kidswear,699,Peach,net,"Peach net t-shirt, everyday and occasion wear.",True
+SKU0075,kidswear,1199,Peach,net,"Peach net frock, everyday and occasion wear.",True
+SKU0076,womenswear,799,Mustard Yellow,net,"Mustard Yellow net dress, everyday and occasion wear.",True
+SKU0077,mens,699,Yellow,chiffon,"Yellow chiffon shirt, everyday and occasion wear.",True
+SKU0078,womenswear,999,Dark Blue,Pure Cotton,"Dark Blue Pure Cotton dress, everyday and occasion wear.",True
+SKU0079,kidswear,399,Blue,chiffon,"Blue chiffon t-shirt, everyday and occasion wear.",True
+SKU0080,womenswear,799,Navy,Rayon,"Navy Rayon lehenga, everyday and occasion wear.",True
+SKU0081,womenswear,399,PURPLE,Rayon,"PURPLE Rayon kurti, everyday and occasion wear.",True
+SKU0082,mens,999,Baby Pink,Rayon,"Baby Pink Rayon t-shirt, everyday and occasion wear.",True
+SKU0083,womenswear,699,Charcoal Grey,net,"Charcoal Grey net kurti, everyday and occasion wear.",True
+SKU0084,kidswear,1199,Blush Pink,Rayon,"Blush Pink Rayon frock, everyday and occasion wear.",False
+SKU0085,kidswear,799,Sand Beige,Rayon,"Sand Beige Rayon t-shirt, everyday and occasion wear.",True
+SKU0086,womenswear,999,ORANGE,net,"ORANGE net dress, everyday and occasion wear.",True
+SKU0087,mens,899,teal,Pure Cotton,"teal Pure Cotton shirt, everyday and occasion wear.",True
+SKU0088,mens,599,red,Cotton blend,"red Cotton blend shirt, everyday and occasion wear.",True
+SKU0089,kidswear,399,Sunshine Yellow,rayon,"Sunshine Yellow rayon t-shirt, everyday and occasion wear.",True
+SKU0090,mens,899,RED,Rayon,"RED Rayon trousers, everyday and occasion wear.",True
+SKU0091,kidswear,1499,Blush Pink,net,"Blush Pink net frock, everyday and occasion wear.",True
+SKU0092,womenswear,999,GREY,Pure Cotton,"GREY Pure Cotton kurti, everyday and occasion wear.",True
+SKU0093,kidswear,499,TEAL,cotton,"TEAL cotton t-shirt, everyday and occasion wear.",True
+SKU0094,womenswear,599,black,georgette,"black georgette kurti, everyday and occasion wear.",True
+SKU0095,mens,399,Peach,net,"Peach net trousers, everyday and occasion wear.",False
+SKU0096,womenswear,1499,orange,Rayon,"orange Rayon kurti, everyday and occasion wear.",True
+SKU0097,kidswear,699,RED,Rayon,"RED Rayon frock, everyday and occasion wear.",True
+SKU0098,kidswear,699,Light Peach,chiffon,"Light Peach chiffon shorts set, everyday and occasion wear.",True
+SKU0099,womenswear,399,Sand Beige,cotton,"Sand Beige cotton lehenga, everyday and occasion wear.",True
+SKU0100,womenswear,1199,Sand Beige,rayon,"Sand Beige rayon top, everyday and occasion wear.",False
+SKU0101,kidswear,799,Gray,cotton,"Gray cotton frock, everyday and occasion wear.",True
+SKU0102,kidswear,699,Bright Red,rayon,"Bright Red rayon t-shirt, everyday and occasion wear.",True
+SKU0103,mens,1199,teal,rayon,"teal rayon shirt, everyday and occasion wear.",True
+SKU0104,kidswear,599,maroon,cotton,"maroon cotton frock, everyday and occasion wear.",True
+SKU0105,kidswear,499,Powder Blue,Cotton blend,"Powder Blue Cotton blend frock, everyday and occasion wear.",True
+SKU0106,mens,999,Peach,Rayon,"Peach Rayon shirt, everyday and occasion wear.",True
+SKU0107,womenswear,499,Navy Blue,Rayon,"Navy Blue Rayon kurti, everyday and occasion wear.",True
+SKU0108,kidswear,499,Wine Purple,poly cotton,"Wine Purple poly cotton frock, everyday and occasion wear.",False
+SKU0109,mens,899,peach,chiffon,"peach chiffon trousers, everyday and occasion wear.",True
+SKU0110,kidswear,399,Mint Green,poly cotton,"Mint Green poly cotton frock, everyday and occasion wear.",True
+SKU0111,kidswear,899,Tomato Red,Cotton blend,"Tomato Red Cotton blend shorts set, everyday and occasion wear.",True
+SKU0112,kidswear,399,Sky Blue,Rayon,"Sky Blue Rayon shorts set, everyday and occasion wear.",True
+SKU0113,womenswear,1199,Green,Pure Cotton,"Green Pure Cotton lehenga, everyday and occasion wear.",True
+SKU0114,kidswear,399,pink,georgette,"pink georgette shorts set, everyday and occasion wear.",True
+SKU0115,mens,1199,Bottle Green,chiffon,"Bottle Green chiffon trousers, everyday and occasion wear.",True
+SKU0116,womenswear,999,Gray,rayon,"Gray rayon kurti, everyday and occasion wear.",False
+SKU0117,mens,499,blue,poly cotton,"blue poly cotton shirt, everyday and occasion wear.",True
+SKU0118,womenswear,1199,BLACK,Pure Cotton,"BLACK Pure Cotton dress, everyday and occasion wear.",True
+SKU0119,mens,499,Mint Green,net,"Mint Green net t-shirt, everyday and occasion wear.",True
+SKU0120,mens,799,Lemon Yellow,Rayon,"Lemon Yellow Rayon shirt, everyday and occasion wear.",True
+SKU0121,womenswear,699,Hot Pink,crepe,"Hot Pink crepe lehenga, everyday and occasion wear.",True
+SKU0122,mens,1199,Mint Green,Cotton blend,"Mint Green Cotton blend t-shirt, everyday and occasion wear.",True
+SKU0123,womenswear,799,Light Peach,cotton,"Light Peach cotton kurti, everyday and occasion wear.",True
+SKU0124,mens,1499,Red,chiffon,"Red chiffon t-shirt, everyday and occasion wear.",True
+SKU0125,mens,899,Navy Blue,crepe,"Navy Blue crepe shirt, everyday and occasion wear.",True
+SKU0126,womenswear,699,Bright Red,cotton,"Bright Red cotton top, everyday and occasion wear.",True
+SKU0127,kidswear,499,Off-White,Rayon,"Off-White Rayon shorts set, everyday and occasion wear.",True
+SKU0128,womenswear,1499,Beige,poly cotton,"Beige poly cotton saree, everyday and occasion wear.",True
+SKU0129,womenswear,999,Charcoal,Rayon,"Charcoal Rayon top, everyday and occasion wear.",True
+SKU0130,kidswear,399,PURPLE,poly cotton,"PURPLE poly cotton shorts set, everyday and occasion wear.",True
+SKU0131,kidswear,999,Gray,cotton,"Gray cotton frock, everyday and occasion wear.",True
+SKU0132,kidswear,599,PURPLE,georgette,"PURPLE georgette frock, everyday and occasion wear.",False
+SKU0133,kidswear,899,Mustrd,crepe,"Mustrd crepe frock, everyday and occasion wear.",True
+SKU0134,kidswear,499,Off-White,georgette,"Off-White georgette frock, everyday and occasion wear.",True
+SKU0135,womenswear,399,Wine,chiffon,"Wine chiffon lehenga, everyday and occasion wear.",True
+SKU0136,mens,999,WHITE,rayon,"WHITE rayon shirt, everyday and occasion wear.",True
+SKU0137,mens,1499,Red,poly cotton,"Red poly cotton shirt, everyday and occasion wear.",True
+SKU0138,womenswear,399,Red,net,"Red net top, everyday and occasion wear.",True
+SKU0139,mens,799,Light Peach,poly cotton,"Light Peach poly cotton trousers, everyday and occasion wear.",True
+SKU0140,kidswear,399,PEACH,georgette,"PEACH georgette t-shirt, everyday and occasion wear.",False
+SKU0141,kidswear,999,peach,Pure Cotton,"peach Pure Cotton t-shirt, everyday and occasion wear.",True
+SKU0142,kidswear,1499,Ochre,net,"Ochre net shorts set, everyday and occasion wear.",True
+SKU0143,womenswear,499,Powder Blue,net,"Powder Blue net saree, everyday and occasion wear.",False
+SKU0144,womenswear,499,dark navy,Cotton blend,"dark navy Cotton blend lehenga, everyday and occasion wear.",True
+SKU0145,mens,799,Green,chiffon,"Green chiffon t-shirt, everyday and occasion wear.",True
+SKU0146,womenswear,699,Sunshine Yellow,Pure Cotton,"Sunshine Yellow Pure Cotton saree, everyday and occasion wear.",True
+SKU0147,kidswear,599,Purple,rayon,"Purple rayon shorts set, everyday and occasion wear.",True
+SKU0148,kidswear,499,Cream White,Rayon,"Cream White Rayon shorts set, everyday and occasion wear.",True
+SKU0149,kidswear,999,Jet Black,net,"Jet Black net t-shirt, everyday and occasion wear.",True
+SKU0150,kidswear,499,Hot Pink,chiffon,"Hot Pink chiffon shorts set, everyday and occasion wear.",True

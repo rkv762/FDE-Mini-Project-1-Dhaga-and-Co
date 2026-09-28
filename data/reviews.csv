@@ -1,0 +1,58 @@
+customer_id,sku_id,rating,review_text,timestamp
+CUST0001,SKU0013,4,"Loved the fit, ordering again for the next function!",2026-08-22
+CUST0001,SKU0146,5,"Colour exactly like the photo, happy with this one.",2026-05-27
+CUST0002,SKU0090,4,"Loved the fit, ordering again for the next function!",2026-08-18
+CUST0002,SKU0007,4,"Loved the fit, ordering again for the next function!",2026-09-12
+CUST0003,SKU0120,4,"Fabric is really comfortable, good for daily wear.",2026-05-23
+CUST0004,SKU0147,4,"Colour exactly like the photo, happy with this one.",2026-06-23
+CUST0005,SKU0011,5,"Loved the fit, ordering again for the next function!",2025-12-19
+CUST0005,SKU0017,4,"Loved the fit, ordering again for the next function!",2026-09-01
+CUST0006,SKU0087,5,"Fabric is really comfortable, good for daily wear.",2026-08-25
+CUST0007,SKU0074,4,"Fabric is really comfortable, good for daily wear.",2026-08-22
+CUST0008,SKU0109,5,"Fabric is really comfortable, good for daily wear.",2025-12-13
+CUST0008,SKU0040,5,"Colour exactly like the photo, happy with this one.",2026-05-10
+CUST0009,SKU0084,4,"Fabric is really comfortable, good for daily wear.",2026-07-28
+CUST0009,SKU0027,4,"Fabric is really comfortable, good for daily wear.",2026-04-19
+CUST0011,SKU0109,5,"Colour exactly like the photo, happy with this one.",2026-06-17
+CUST0011,SKU0010,4,"Colour exactly like the photo, happy with this one.",2026-03-24
+CUST0012,SKU0071,4,"Fabric is really comfortable, good for daily wear.",2026-02-15
+CUST0012,SKU0091,5,"Colour exactly like the photo, happy with this one.",2026-05-29
+CUST0013,SKU0001,5,"Fabric is really comfortable, good for daily wear.",2026-01-16
+CUST0014,SKU0060,4,"Loved the fit, ordering again for the next function!",2026-02-24
+CUST0015,SKU0120,4,"Colour exactly like the photo, happy with this one.",2026-09-15
+CUST0046,SKU0041,5,"Fabric is really comfortable, good for daily wear.",2026-06-04
+CUST0046,SKU0008,4,"Colour exactly like the photo, happy with this one.",2026-06-20
+CUST0047,SKU0018,5,"Loved the fit, ordering again for the next function!",2026-05-26
+CUST0047,SKU0033,5,"Colour exactly like the photo, happy with this one.",2026-07-13
+CUST0047,SKU0106,5,"Fabric is really comfortable, good for daily wear.",2026-07-30
+CUST0048,SKU0057,4,"Fabric is really comfortable, good for daily wear.",2026-06-09
+CUST0049,SKU0013,5,"Loved the fit, ordering again for the next function!",2026-03-26
+CUST0049,SKU0107,4,"Fabric is really comfortable, good for daily wear.",2026-02-13
+CUST0050,SKU0016,4,"Loved the fit, ordering again for the next function!",2026-04-12
+CUST0050,SKU0035,4,"Loved the fit, ordering again for the next function!",2025-12-29
+CUST0050,SKU0035,4,"Colour exactly like the photo, happy with this one.",2025-12-04
+CUST0051,SKU0053,5,"Loved the fit, ordering again for the next function!",2026-08-27
+CUST0051,SKU0072,5,"Fabric is really comfortable, good for daily wear.",2026-07-23
+CUST0051,SKU0044,5,"Loved the fit, ordering again for the next function!",2026-04-02
+CUST0051,SKU0049,4,"Colour exactly like the photo, happy with this one.",2026-04-25
+CUST0052,SKU0098,5,"Loved the fit, ordering again for the next function!",2025-12-10
+CUST0053,SKU0036,4,"Fabric is really comfortable, good for daily wear.",2026-01-16
+CUST0054,SKU0009,4,"Colour exactly like the photo, happy with this one.",2026-02-15
+CUST0054,SKU0043,5,"Colour exactly like the photo, happy with this one.",2026-06-10
+CUST0054,SKU0022,4,"Fabric is really comfortable, good for daily wear.",2026-08-08
+CUST0055,SKU0136,5,"Colour exactly like the photo, happy with this one.",2026-08-06
+CUST0055,SKU0149,4,"Colour exactly like the photo, happy with this one.",2026-02-05
+CUST0055,SKU0067,4,"Colour exactly like the photo, happy with this one.",2026-07-23
+CUST0055,SKU0126,4,"Colour exactly like the photo, happy with this one.",2025-12-30
+CUST0056,SKU0130,5,"Colour exactly like the photo, happy with this one.",2026-06-23
+CUST0056,SKU0145,4,"Fabric is really comfortable, good for daily wear.",2026-05-20
+CUST0057,SKU0055,4,"Fabric is really comfortable, good for daily wear.",2026-08-05
+CUST0057,SKU0052,5,"Colour exactly like the photo, happy with this one.",2026-09-13
+CUST0058,SKU0029,4,"Colour exactly like the photo, happy with this one.",2026-02-02
+CUST0058,SKU0029,5,"Colour exactly like the photo, happy with this one.",2026-03-08
+CUST0058,SKU0065,5,"Loved the fit, ordering again for the next function!",2026-01-12
+CUST0058,SKU0124,5,"Fabric is really comfortable, good for daily wear.",2026-06-29
+CUST0059,SKU0133,4,"Fabric is really comfortable, good for daily wear.",2026-07-13
+CUST0059,SKU0002,4,"Loved the fit, ordering again for the next function!",2026-01-26
+CUST0059,SKU0012,5,"Loved the fit, ordering again for the next function!",2026-01-05
+CUST0060,SKU0039,5,"Fabric is really comfortable, good for daily wear.",2026-02-02

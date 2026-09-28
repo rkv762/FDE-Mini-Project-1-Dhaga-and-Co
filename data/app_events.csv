@@ -1,0 +1,134 @@
+event_id,customer_id,event_type,query_text,timestamp
+EVT00001,CUST0001,search,shaadi wala lehenga,2026-09-09
+EVT00002,CUST0001,search,party wear top,2026-09-21
+EVT00003,CUST0001,search,school ke liye shirt,2026-09-22
+EVT00004,CUST0001,search,school ke liye shirt,2026-09-20
+EVT00005,CUST0001,search,office wear kurti,2026-09-24
+EVT00006,CUST0002,search,casual daily wear kurti,2026-09-23
+EVT00007,CUST0002,search,birthday party frock for kids,2026-09-11
+EVT00008,CUST0002,search,school ke liye shirt,2026-09-08
+EVT00009,CUST0003,search,shaadi wala lehenga,2026-09-11
+EVT00010,CUST0003,search,office wear kurti,2026-09-21
+EVT00011,CUST0003,search,shaadi wala lehenga,2026-09-22
+EVT00012,CUST0003,search,school ke liye shirt,2026-09-21
+EVT00013,CUST0003,search,casual daily wear kurti,2026-09-21
+EVT00014,CUST0004,search,mehndi function dress,2026-09-26
+EVT00015,CUST0004,search,birthday party frock for kids,2026-09-24
+EVT00016,CUST0004,search,school ke liye shirt,2026-09-16
+EVT00017,CUST0005,search,shaadi wala lehenga,2026-09-25
+EVT00018,CUST0005,search,school ke liye shirt,2026-09-24
+EVT00019,CUST0006,search,college jaane ke liye jeans,2026-09-16
+EVT00020,CUST0006,search,birthday party frock for kids,2026-09-10
+EVT00021,CUST0007,search,school ke liye shirt,2026-09-12
+EVT00022,CUST0007,search,college jaane ke liye jeans,2026-09-25
+EVT00023,CUST0007,search,party wear top,2026-09-17
+EVT00024,CUST0008,search,party wear top,2026-09-23
+EVT00025,CUST0008,search,haldi ceremony dress,2026-09-20
+EVT00026,CUST0008,search,shaadi wala lehenga,2026-09-19
+EVT00027,CUST0009,search,diwali ke liye kurti,2026-09-19
+EVT00028,CUST0009,search,shaadi wala lehenga,2026-09-24
+EVT00029,CUST0009,search,college jaane ke liye jeans,2026-09-15
+EVT00030,CUST0009,search,casual daily wear kurti,2026-09-27
+EVT00031,CUST0009,search,haldi ceremony dress,2026-09-20
+EVT00032,CUST0010,search,office wear kurti,2026-09-22
+EVT00033,CUST0010,search,party wear top,2026-09-14
+EVT00034,CUST0010,search,casual daily wear kurti,2026-09-24
+EVT00035,CUST0011,search,college jaane ke liye jeans,2026-09-09
+EVT00036,CUST0011,search,haldi ceremony dress,2026-09-12
+EVT00037,CUST0012,search,diwali ke liye kurti,2026-09-13
+EVT00038,CUST0012,search,office wear kurti,2026-09-23
+EVT00039,CUST0012,search,haldi ceremony dress,2026-09-12
+EVT00040,CUST0012,search,party wear top,2026-09-23
+EVT00041,CUST0012,search,shaadi wala lehenga,2026-09-13
+EVT00042,CUST0013,search,birthday party frock for kids,2026-09-14
+EVT00043,CUST0013,search,school ke liye shirt,2026-09-16
+EVT00044,CUST0013,search,mehndi function dress,2026-09-15
+EVT00045,CUST0013,search,party wear top,2026-09-09
+EVT00046,CUST0013,search,party wear top,2026-09-11
+EVT00047,CUST0014,search,birthday party frock for kids,2026-09-08
+EVT00048,CUST0014,search,shaadi wala lehenga,2026-09-10
+EVT00049,CUST0014,search,diwali ke liye kurti,2026-09-12
+EVT00050,CUST0015,search,casual daily wear kurti,2026-09-16
+EVT00051,CUST0015,search,school ke liye shirt,2026-09-25
+EVT00052,CUST0015,search,mehndi function dress,2026-09-27
+EVT00053,CUST0015,search,office wear kurti,2026-09-17
+EVT00054,CUST0015,search,school ke liye shirt,2026-09-12
+EVT00055,CUST0016,search,budget dress,2026-09-03
+EVT00056,CUST0016,search,discount offers womenswear,2026-09-14
+EVT00057,CUST0016,search,sasta kurti under 500,2026-09-19
+EVT00058,CUST0016,search,discount offers womenswear,2026-09-18
+EVT00059,CUST0017,search,discount offers womenswear,2026-09-21
+EVT00060,CUST0017,search,sasta kurti under 500,2026-09-23
+EVT00061,CUST0017,search,cheap shirt under 400,2026-09-15
+EVT00062,CUST0018,search,sasta kurti under 500,2026-09-03
+EVT00063,CUST0018,search,budget dress,2026-09-08
+EVT00064,CUST0018,search,sasta kurti under 500,2026-09-21
+EVT00065,CUST0018,search,budget dress,2026-09-07
+EVT00066,CUST0019,search,budget dress,2026-08-31
+EVT00067,CUST0019,search,discount offers womenswear,2026-09-10
+EVT00068,CUST0019,search,cheap shirt under 400,2026-09-22
+EVT00069,CUST0020,search,sasta kurti under 500,2026-09-26
+EVT00070,CUST0020,search,cheap shirt under 400,2026-09-09
+EVT00071,CUST0020,search,sasta kurti under 500,2026-09-25
+EVT00072,CUST0020,search,budget dress,2026-09-08
+EVT00073,CUST0021,search,sasta kurti under 500,2026-09-07
+EVT00074,CUST0021,search,sasta kurti under 500,2026-09-27
+EVT00075,CUST0022,search,budget dress,2026-09-09
+EVT00076,CUST0022,search,budget dress,2026-09-04
+EVT00077,CUST0022,search,budget dress,2026-09-16
+EVT00078,CUST0022,search,cheap shirt under 400,2026-09-18
+EVT00079,CUST0023,search,sasta kurti under 500,2026-08-30
+EVT00080,CUST0023,search,discount offers womenswear,2026-09-18
+EVT00081,CUST0024,search,sasta kurti under 500,2026-09-02
+EVT00082,CUST0024,search,budget dress,2026-09-07
+EVT00083,CUST0025,search,discount offers womenswear,2026-09-07
+EVT00084,CUST0025,search,budget dress,2026-09-01
+EVT00085,CUST0025,search,cheap shirt under 400,2026-09-09
+EVT00086,CUST0025,search,cheap shirt under 400,2026-09-15
+EVT00087,CUST0026,search,sasta kurti under 500,2026-09-09
+EVT00088,CUST0026,search,budget dress,2026-09-01
+EVT00089,CUST0027,search,budget dress,2026-09-21
+EVT00090,CUST0027,search,sasta kurti under 500,2026-09-08
+EVT00091,CUST0027,search,budget dress,2026-09-13
+EVT00092,CUST0028,search,cheap shirt under 400,2026-09-20
+EVT00093,CUST0028,search,discount offers womenswear,2026-08-30
+EVT00094,CUST0029,search,discount offers womenswear,2026-09-18
+EVT00095,CUST0029,search,budget dress,2026-09-15
+EVT00096,CUST0029,search,cheap shirt under 400,2026-09-26
+EVT00097,CUST0029,search,sasta kurti under 500,2026-08-31
+EVT00098,CUST0030,search,sasta kurti under 500,2026-09-19
+EVT00099,CUST0030,search,budget dress,2026-09-26
+EVT00100,CUST0030,search,budget dress,2026-09-09
+EVT00101,CUST0031,search,casual daily wear kurti,2026-09-11
+EVT00102,CUST0031,search,school ke liye shirt,2026-09-13
+EVT00103,CUST0031,search,diwali ke liye kurti,2026-09-20
+EVT00104,CUST0032,search,diwali ke liye kurti,2026-09-05
+EVT00105,CUST0032,search,diwali ke liye kurti,2026-09-22
+EVT00106,CUST0033,search,diwali ke liye kurti,2026-09-26
+EVT00107,CUST0033,search,shaadi wala lehenga,2026-09-01
+EVT00108,CUST0033,search,diwali ke liye kurti,2026-09-19
+EVT00109,CUST0034,search,school ke liye shirt,2026-09-01
+EVT00110,CUST0035,search,college jaane ke liye jeans,2026-08-29
+EVT00111,CUST0035,search,shaadi wala lehenga,2026-08-31
+EVT00112,CUST0036,search,mehndi function dress,2026-09-10
+EVT00113,CUST0036,search,diwali ke liye kurti,2026-09-24
+EVT00114,CUST0037,search,birthday party frock for kids,2026-09-01
+EVT00115,CUST0037,search,mehndi function dress,2026-09-15
+EVT00116,CUST0037,search,casual daily wear kurti,2026-09-17
+EVT00117,CUST0038,search,school ke liye shirt,2026-09-16
+EVT00118,CUST0038,search,birthday party frock for kids,2026-09-26
+EVT00119,CUST0039,search,shaadi wala lehenga,2026-09-19
+EVT00120,CUST0039,search,mehndi function dress,2026-09-18
+EVT00121,CUST0040,search,haldi ceremony dress,2026-09-14
+EVT00122,CUST0041,search,haldi ceremony dress,2026-08-29
+EVT00123,CUST0041,search,birthday party frock for kids,2026-09-10
+EVT00124,CUST0042,search,diwali ke liye kurti,2026-08-30
+EVT00125,CUST0042,search,mehndi function dress,2026-09-22
+EVT00126,CUST0042,search,birthday party frock for kids,2026-09-16
+EVT00127,CUST0043,search,school ke liye shirt,2026-09-25
+EVT00128,CUST0044,search,diwali ke liye kurti,2026-09-20
+EVT00129,CUST0044,search,school ke liye shirt,2026-09-26
+EVT00130,CUST0044,search,mehndi function dress,2026-09-17
+EVT00131,CUST0045,search,party wear top,2026-09-27
+EVT00132,CUST0045,search,school ke liye shirt,2026-09-20
+EVT00133,CUST0045,search,shaadi wala lehenga,2026-09-21

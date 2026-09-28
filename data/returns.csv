@@ -1,0 +1,61 @@
+return_id,order_id,customer_id,reason_code,reason_text,timestamp
+RET00001,ORD00088,CUST0031,size_issue,"runs small, ordered usual size but too tight",2026-09-04
+RET00002,ORD00089,CUST0031,other,returning,2026-07-31
+RET00003,ORD00090,CUST0031,size_issue,"size bada tha, loose fit",2026-08-29
+RET00004,ORD00091,CUST0032,size_issue,"size bada tha, loose fit",2026-07-24
+RET00005,ORD00092,CUST0032,other,quality theek nahi laga,2026-09-02
+RET00006,ORD00093,CUST0032,quality,fabric quality thik nahi thi,2026-08-09
+RET00007,ORD00094,CUST0032,size_issue,"size bada tha, loose fit",2026-09-09
+RET00008,ORD00095,CUST0033,other,returning,2026-09-18
+RET00009,ORD00096,CUST0033,other,issue with the order,2026-09-09
+RET00010,ORD00097,CUST0033,quality,stitching came apart after one wash,2026-09-08
+RET00011,ORD00098,CUST0033,size_issue,"runs small, ordered usual size but too tight",2026-08-21
+RET00012,ORD00099,CUST0033,quality,fabric quality thik nahi thi,2026-07-28
+RET00013,ORD00100,CUST0034,quality,fabric quality thik nahi thi,2026-09-07
+RET00014,ORD00101,CUST0034,quality,fabric quality thik nahi thi,2026-08-02
+RET00015,ORD00102,CUST0034,other,issue with the order,2026-08-31
+RET00016,ORD00103,CUST0035,size_issue,"size bada tha, loose fit",2026-09-10
+RET00017,ORD00104,CUST0035,other,returning,2026-07-23
+RET00018,ORD00105,CUST0035,other,not as expected,2026-07-26
+RET00019,ORD00106,CUST0036,quality,colour looked different from photos,2026-08-01
+RET00020,ORD00107,CUST0036,other,not required,2026-08-10
+RET00021,ORD00108,CUST0036,quality,colour looked different from photos,2026-07-22
+RET00022,ORD00109,CUST0036,other,not as expected,2026-09-06
+RET00023,ORD00110,CUST0037,quality,colour looked different from photos,2026-09-15
+RET00024,ORD00111,CUST0037,quality,stitching came apart after one wash,2026-07-25
+RET00025,ORD00112,CUST0037,quality,fabric quality thik nahi thi,2026-08-29
+RET00026,ORD00113,CUST0037,other,quality theek nahi laga,2026-08-09
+RET00027,ORD00114,CUST0038,quality,fabric quality thik nahi thi,2026-08-13
+RET00028,ORD00115,CUST0038,size_issue,"size chart galat tha, bahut chota nikla",2026-08-03
+RET00029,ORD00116,CUST0038,other,quality theek nahi laga,2026-07-31
+RET00030,ORD00117,CUST0038,other,not required,2026-09-23
+RET00031,ORD00118,CUST0038,size_issue,"runs small, ordered usual size but too tight",2026-09-22
+RET00032,ORD00119,CUST0039,quality,stitching came apart after one wash,2026-08-21
+RET00033,ORD00120,CUST0039,other,quality theek nahi laga,2026-08-30
+RET00034,ORD00121,CUST0039,other,not required,2026-08-20
+RET00035,ORD00122,CUST0039,size_issue,"size bada tha, loose fit",2026-09-03
+RET00036,ORD00123,CUST0039,other,issue with the order,2026-08-28
+RET00037,ORD00124,CUST0040,other,quality theek nahi laga,2026-08-13
+RET00038,ORD00125,CUST0040,size_issue,"size chart galat tha, bahut chota nikla",2026-08-13
+RET00039,ORD00126,CUST0040,size_issue,"runs small, ordered usual size but too tight",2026-09-11
+RET00040,ORD00127,CUST0041,quality,colour looked different from photos,2026-08-01
+RET00041,ORD00128,CUST0041,quality,colour looked different from photos,2026-08-09
+RET00042,ORD00129,CUST0041,size_issue,"runs small, ordered usual size but too tight",2026-07-21
+RET00043,ORD00130,CUST0041,size_issue,"runs small, ordered usual size but too tight",2026-08-16
+RET00044,ORD00131,CUST0041,size_issue,"size bada tha, loose fit",2026-08-26
+RET00045,ORD00132,CUST0042,size_issue,"runs small, ordered usual size but too tight",2026-08-14
+RET00046,ORD00133,CUST0042,quality,stitching came apart after one wash,2026-07-25
+RET00047,ORD00134,CUST0042,quality,colour looked different from photos,2026-08-15
+RET00048,ORD00135,CUST0042,other,not required,2026-08-19
+RET00049,ORD00136,CUST0042,other,issue with the order,2026-07-22
+RET00050,ORD00137,CUST0043,quality,colour looked different from photos,2026-09-15
+RET00051,ORD00138,CUST0043,other,quality theek nahi laga,2026-08-24
+RET00052,ORD00139,CUST0043,size_issue,"size chart galat tha, bahut chota nikla",2026-07-24
+RET00053,ORD00140,CUST0044,other,issue with the order,2026-08-13
+RET00054,ORD00141,CUST0044,size_issue,"size bada tha, loose fit",2026-08-01
+RET00055,ORD00142,CUST0044,other,returning,2026-09-22
+RET00056,ORD00143,CUST0045,other,returning,2026-08-30
+RET00057,ORD00144,CUST0045,size_issue,"runs small, ordered usual size but too tight",2026-09-06
+RET00058,ORD00145,CUST0045,other,issue with the order,2026-09-13
+RET00059,ORD00146,CUST0045,quality,colour looked different from photos,2026-08-14
+RET00060,ORD00147,CUST0045,size_issue,"size chart galat tha, bahut chota nikla",2026-08-03
