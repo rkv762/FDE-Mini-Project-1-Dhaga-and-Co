@@ -220,6 +220,36 @@ function modelLabel(id) {
   return found ? found.label.split(' (')[0] : id;
 }
 
+function shortModelName(id) {
+  if (!id) return '—';
+  const last = id.split('/').pop();
+  return last.replace('claude-', '').replace('-4.5', ' 4.5').replace('-5', ' 5').replace('-5.5', ' 5.5');
+}
+
+function renderModelCalls(calls) {
+  if (!calls || !calls.length) return '';
+  const rows = calls.map(c => `
+    <tr>
+      <td>${c.step}</td>
+      <td>${shortModelName(c.model)}</td>
+      <td>${c.input_tokens}&nbsp;in&nbsp;/&nbsp;${c.output_tokens}&nbsp;out</td>
+      <td>$${c.estimated_cost_usd.toFixed(5)}</td>
+    </tr>`).join('');
+  return `
+    <div class="history-section">
+      <h3>Model calls this run (${calls.length})</h3>
+      <p class="history-empty" style="font-style:normal; margin-top:-4px;">
+        Every step is a fixed part of the pipeline except the draft/evaluate pair, which repeats
+        once per escalation when Model B is "Auto" — a rejected cheap attempt costs a call before
+        the next tier is tried.
+      </p>
+      <table class="history-table">
+        <tr><th>Step</th><th>Model</th><th>Tokens</th><th>Cost</th></tr>
+        ${rows}
+      </table>
+    </div>`;
+}
+
 function renderHistory(history) {
   if (!history) return '';
   const orders = history.orders || [];
@@ -286,6 +316,7 @@ function render(result) {
   }
 
   html += `<p class="cost">Estimated cost this run: $${(result.estimated_cost_usd || 0).toFixed(5)} · ${(result.model_calls || []).length} model call(s)</p>`;
+  html += renderModelCalls(result.model_calls);
   html += renderHistory(result.customer_history);
   resultPanel.innerHTML = html;
 }
