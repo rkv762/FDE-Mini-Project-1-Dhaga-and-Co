@@ -147,3 +147,31 @@ carries its own settings. That's a deliberate consequence of the read-only-files
 in `docs/build-note.md`: Vercel's deployed functions don't reliably share memory across
 requests either, so a mutable server-side `SETTINGS` dict would be a second version of the same
 mistake. "No restart needed" in the UI copy is true here by construction.
+
+## What this UI is, and what it isn't
+
+The deployed screen is an **internal review console, not the delivery mechanism**. It never
+sends a WhatsApp message or a push notification — it only drafts and evaluates one, on demand,
+for a customer you pick. That's a deliberate MVP boundary (the brief explicitly does not ask
+for "a system integrated with any real Dhaga & Co. platform"), but it has to be stated
+explicitly, not left for someone to assume.
+
+The production shape this implies:
+
+1. A **scheduled batch job** runs `pipeline.run()` for every customer due for re-engagement —
+   no human, no dropdown. This MVP doesn't build that scheduler; `scripts/demo.py` and
+   `app.py`'s `/api/recommend` are both just single-customer entry points into the same
+   `src/pipeline.py` the batch job would call.
+2. **`status: "ok"`** results are sent automatically through Dhaga & Co.'s existing WhatsApp
+   channel (they already run one through Gupshup for support, per the brief — same channel,
+   triggered programmatically instead of by an agent).
+3. **`status: "needs_human_review"`** results are where a screen like this one earns its place
+   — a CX or growth-ops person looks up that specific customer and decides whether to
+   intervene personally.
+4. **`status: "insufficient_data"` / `"error"`** are skipped and logged, nothing sent.
+
+Every `/api/recommend` response also includes `customer_history` — the same raw orders,
+search keywords, returns and reviews the pipeline itself read to produce the recommendation
+(a plain deterministic lookup, no extra model cost) — rendered in the UI right under the
+result. The point is that nobody, presenter or reviewer, should have to take the model's word
+for why it said what it said; the evidence is one scroll away.

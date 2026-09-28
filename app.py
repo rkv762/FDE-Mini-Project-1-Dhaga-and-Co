@@ -76,6 +76,11 @@ def recommend(
     )
     result = pipeline.run(customer_id, settings)
     payload = result.model_dump()
+    # The raw evidence behind the recommendation — not part of PipelineResult
+    # (it's not something a model produced), but a reviewer deciding whether
+    # to trust or override the output needs to see it next to the output,
+    # not take the model's word for it. Pure lookup, no extra model cost.
+    payload["customer_history"] = data_access.fetch_customer_history(customer_id)
     return JSONResponse(content=payload, status_code=500 if result.status == "error" else 200)
 
 

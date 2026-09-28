@@ -64,6 +64,13 @@
   .slider-value { color: var(--text); font-weight: 600; font-size: 0.85rem; }
   input[type="range"] { width: 100%; margin: 6px 0; accent-color: var(--accent); }
   pre { white-space: pre-wrap; font-size: 0.8rem; color: var(--muted); }
+  .history-section { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .history-section h3 { font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 10px; }
+  .history-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-bottom: 16px; }
+  .history-table th { text-align: left; color: var(--muted); font-weight: 500; padding: 4px 8px 4px 0; border-bottom: 1px solid var(--border); }
+  .history-table td { padding: 5px 8px 5px 0; border-bottom: 1px solid rgba(36,48,74,0.5); }
+  .history-empty { color: var(--muted); font-size: 0.82rem; font-style: italic; margin-bottom: 16px; }
+  .keyword-pill { display: inline-block; background: rgba(255,122,89,0.12); color: var(--accent); border-radius: 999px; padding: 2px 10px; font-size: 0.78rem; margin: 0 6px 6px 0; }
 </style>
 </head>
 <body>
@@ -71,7 +78,7 @@
   <header>
     <div>
       <h1>Next Purchase Nudge — Dhaga & Co.</h1>
-      <p class="sub">Pick a customer, generate a personalized re-engagement recommendation.</p>
+      <p class="sub">Internal review console — preview and audit what the system would send before it ever goes out. This screen does not send anything; in production, approved messages are sent automatically in a scheduled batch, and only cases held for human review land here.</p>
     </div>
     <button id="settingsToggle" type="button" title="Settings" aria-label="Settings">⚙</button>
 
@@ -213,6 +220,45 @@ function modelLabel(id) {
   return found ? found.label.split(' (')[0] : id;
 }
 
+function renderHistory(history) {
+  if (!history) return '';
+  const orders = history.orders || [];
+  const events = history.events || [];
+  const returns = history.returns || [];
+  const reviews = history.reviews || [];
+
+  let html = '<div class="history-section"><h3>Why — the evidence behind this</h3>';
+
+  html += '<p style="font-size:0.82rem; color:var(--muted); margin-top:0;">Orders</p>';
+  html += orders.length
+    ? `<table class="history-table"><tr><th>Date</th><th>Category</th><th>Price</th><th>Status</th></tr>${
+        orders.map(o => `<tr><td>${o.order_date}</td><td>${o.category}</td><td>₹${o.price_inr}</td><td>${o.status}</td></tr>`).join('')
+      }</table>`
+    : '<p class="history-empty">No orders on record.</p>';
+
+  html += '<p style="font-size:0.82rem; color:var(--muted);">Search keywords</p>';
+  html += events.length
+    ? `<div>${events.map(e => `<span class="keyword-pill">${e.query_text}</span>`).join('')}</div>`
+    : '<p class="history-empty">No app search activity on record.</p>';
+
+  html += '<p style="font-size:0.82rem; color:var(--muted); margin-top:14px;">Returns</p>';
+  html += returns.length
+    ? `<table class="history-table"><tr><th>Date</th><th>Reason code</th><th>Customer said</th></tr>${
+        returns.map(r => `<tr><td>${r.timestamp}</td><td>${r.reason_code}</td><td>${r.reason_text}</td></tr>`).join('')
+      }</table>`
+    : '<p class="history-empty">No returns on record.</p>';
+
+  if (reviews.length) {
+    html += '<p style="font-size:0.82rem; color:var(--muted);">Reviews</p>';
+    html += `<table class="history-table"><tr><th>Rating</th><th>Text</th></tr>${
+      reviews.map(r => `<tr><td>${r.rating}/5</td><td>${r.review_text}</td></tr>`).join('')
+    }</table>`;
+  }
+
+  html += '</div>';
+  return html;
+}
+
 function render(result) {
   resultPanel.style.display = 'block';
   const statusLabel = {
@@ -240,6 +286,7 @@ function render(result) {
   }
 
   html += `<p class="cost">Estimated cost this run: $${(result.estimated_cost_usd || 0).toFixed(5)} · ${(result.model_calls || []).length} model call(s)</p>`;
+  html += renderHistory(result.customer_history);
   resultPanel.innerHTML = html;
 }
 
