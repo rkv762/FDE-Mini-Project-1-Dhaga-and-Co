@@ -1,6 +1,6 @@
 # Discovery Note — Dhaga & Co.
 
-_Dated before the first commit of application code. One page. Agreed by the whole group._
+_Dated 2026-09-28, before the first commit of application code. Agreed by the whole group._
 
 ## The problem, in one sentence
 
