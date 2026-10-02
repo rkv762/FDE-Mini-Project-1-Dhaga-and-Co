@@ -100,5 +100,5 @@ exposes `/api/customers` and `/api/recommend`, wrapping the same `src/pipeline.p
 - [x] Architecture agreed
 - [x] MVP built, runs locally
 - [x] Deployed to a live URL, fully functional
-- [ ] Build note finished (cost line + what broke, after a live run)
+- [x] Build note finished (cost line + what broke, after a live run)
 - [ ] Presentation delivered
