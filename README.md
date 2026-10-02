@@ -89,6 +89,7 @@ exposes `/api/customers` and `/api/recommend`, wrapping the same `src/pipeline.p
 | `src/data_access.py` | Deterministic data lookups — no model calls. |
 | `src/chains.py` | The LangChain (LCEL) chains for each model step. |
 | `src/pipeline.py` | Orchestration: `RunnableBranch` routing, `RunnableParallel` branch, evaluator-optimizer retry loop. |
+| `src/review.py` | Human review decisions — approve, reject, or approve an edited draft — validated before they're recorded. |
 | `scripts/demo.py` | Local, no-server entry point for the cold start above. |
 | `scripts/cost_comparison.py` | Compares the cost of an all-Model-A, all-Model-B, and our actual split, for the "why this split" numbers in the build note. |
 | `app.py` + `index.html` + `vercel.json` | The deployed version — single FastAPI entrypoint per Vercel's current Python runtime convention. |

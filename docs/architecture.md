@@ -165,9 +165,17 @@ The production shape this implies:
 2. **`status: "ok"`** results are sent automatically through Dhaga & Co.'s existing WhatsApp
    channel (they already run one through Gupshup for support, per the brief — same channel,
    triggered programmatically instead of by an agent).
-3. **`status: "needs_human_review"`** results are where a screen like this one earns its place
-   — a CX or growth-ops person looks up that specific customer and decides whether to
-   intervene personally.
+3. **`status: "needs_human_review"`** results are where a screen like this one earns its place.
+   Each held case shows a **Review this case** button; it opens the whole case — customer
+   facts (tier, install date, orders, how many were returned, searches), why the system held
+   it, the recommended products, the full order/search/return/review history, and the draft
+   message in an editable box. The reviewer edits the draft if needed, then **approves** or
+   **rejects** (a rejection needs a short reason). Approving re-runs the edited text through
+   the same blocked-phrase gate the pipeline uses, so a reviewer can't accidentally approve
+   a promise the business doesn't make. Decisions go to `POST /api/review`, which appends
+   them (including the final text and whether it was edited) to the decision log. Nothing is
+   sent from the screen, and on Vercel the log is the ephemeral `/tmp` one described in the
+   build note — production would write decisions to the queue or table that feeds the sender.
 4. **`status: "insufficient_data"` / `"error"`** are skipped and logged, nothing sent.
 
 Every `/api/recommend` response also includes `customer_history` — the same raw orders,

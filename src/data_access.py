@@ -30,8 +30,10 @@ def fetch_customer_history(customer_id: str) -> dict:
     events = [e for e in _read_csv("app_events.csv") if e["customer_id"] == customer_id]
     returns = [r for r in _read_csv("returns.csv") if r["customer_id"] == customer_id]
     reviews = [r for r in _read_csv("reviews.csv") if r["customer_id"] == customer_id]
+    customer = next((c for c in _read_csv("customers.csv") if c["customer_id"] == customer_id), None)
     return {
         "customer_id": customer_id,
+        "customer": customer,
         "orders": orders,
         "events": events,
         "returns": returns,

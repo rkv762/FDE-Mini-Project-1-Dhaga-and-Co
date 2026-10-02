@@ -71,6 +71,32 @@
   .history-table td { padding: 5px 8px 5px 0; border-bottom: 1px solid rgba(36,48,74,0.5); }
   .history-empty { color: var(--muted); font-size: 0.82rem; font-style: italic; margin-bottom: 16px; }
   .keyword-pill { display: inline-block; background: rgba(255,122,89,0.12); color: var(--accent); border-radius: 999px; padding: 2px 10px; font-size: 0.78rem; margin: 0 6px 6px 0; }
+
+  /* Human review */
+  button.review-btn { margin-top: 16px; width: 100%; background: transparent; color: var(--warn); border: 1px solid var(--warn); }
+  .decision-banner { border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; margin: 12px 0 0; }
+  .decision-banner.approve { background: rgba(55,201,139,0.12); color: var(--ok); }
+  .decision-banner.reject { background: rgba(239,90,111,0.12); color: var(--err); }
+  .overlay { display: none; position: fixed; inset: 0; z-index: 50; overflow-y: auto; padding: 16px; background: rgba(5,8,16,0.75); }
+  .overlay.open { display: block; }
+  .review-panel { max-width: 760px; margin: 0 auto; background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 20px 20px 0; }
+  .review-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .review-head h2 { margin: 0 0 6px; font-size: 1.1rem; }
+  button.icon-btn { flex: 0 0 auto; width: 36px; height: 36px; padding: 0; background: transparent; color: var(--muted); border: 1px solid var(--border); font-size: 1.1rem; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.82rem; color: var(--muted); margin: 10px 0 4px; }
+  .meta-row b { color: var(--text); font-weight: 600; }
+  .review-block { margin-top: 18px; }
+  .review-block h3 { font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 8px; }
+  .review-block ul { margin: 0; padding-left: 18px; font-size: 0.88rem; line-height: 1.5; }
+  textarea { width: 100%; background: #0e1626; color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font: inherit; font-size: 0.95rem; line-height: 1.5; resize: vertical; }
+  textarea:focus { outline: none; border-color: var(--accent); }
+  .editor-foot { display: flex; justify-content: space-between; gap: 12px; font-size: 0.78rem; color: var(--muted); margin-top: 6px; }
+  button.link-btn { background: none; border: none; padding: 0; color: var(--accent); font-size: 0.78rem; font-weight: 500; cursor: pointer; }
+  .review-error { display: none; color: var(--err); font-size: 0.85rem; margin: 12px 0 0; }
+  .review-actions { position: sticky; bottom: 0; display: flex; gap: 10px; flex-wrap: wrap; margin: 20px -20px 0; padding: 14px 20px; background: var(--panel); border-top: 1px solid var(--border); border-radius: 0 0 14px 14px; }
+  .review-actions button { flex: 1; min-width: 110px; }
+  button.approve { background: var(--ok); color: #06241a; }
+  button.reject { background: var(--err); color: #2a0a10; }
 </style>
 </head>
 <body>
@@ -118,6 +144,10 @@
   </div>
 
   <div class="panel" id="result" style="display:none;"></div>
+</div>
+
+<div class="overlay" id="reviewOverlay" role="dialog" aria-modal="true" aria-labelledby="reviewTitle">
+  <div class="review-panel" id="reviewPanel"></div>
 </div>
 
 <script>
@@ -315,10 +345,159 @@ function render(result) {
     html += `<h3>Reasons</h3><p class="reasons">${result.reasons.join('<br>')}</p>`;
   }
 
+  if (result.status === 'needs_human_review') {
+    const prior = loadDecisions()[result.customer_id];
+    if (prior) html += decisionBanner(prior);
+    html += `<button class="review-btn" id="openReview" type="button">${prior ? 'Review again' : 'Review this case'}</button>`;
+  }
+
   html += `<p class="cost">Estimated cost this run: $${(result.estimated_cost_usd || 0).toFixed(5)} · ${(result.model_calls || []).length} model call(s)</p>`;
   html += renderModelCalls(result.model_calls);
   html += renderHistory(result.customer_history);
   resultPanel.innerHTML = html;
+  lastResult = result;
+  const openBtn = document.getElementById('openReview');
+  if (openBtn) openBtn.addEventListener('click', openReview);
+}
+
+// ── Human review ──────────────────────────────────────────────────────────
+let lastResult = null;
+const reviewOverlay = document.getElementById('reviewOverlay');
+const reviewPanel = document.getElementById('reviewPanel');
+const DECISIONS_KEY = 'nudge.reviewDecisions';
+
+function esc(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function loadDecisions() {
+  try { return JSON.parse(localStorage.getItem(DECISIONS_KEY) || '{}'); } catch (e) { return {}; }
+}
+
+function saveDecision(customerId, decision) {
+  try {
+    const all = loadDecisions();
+    all[customerId] = decision;
+    localStorage.setItem(DECISIONS_KEY, JSON.stringify(all));
+  } catch (e) { /* storage blocked: the decision is still recorded server-side */ }
+}
+
+function decisionBanner(d) {
+  const when = d.at ? new Date(d.at).toLocaleString() : '';
+  const verb = d.action === 'approve' ? (d.edited ? 'Approved with edits' : 'Approved') : 'Rejected';
+  return `<p class="decision-banner ${d.action}"><strong>${verb}</strong>${when ? ' · ' + esc(when) : ''}. Decision recorded; this screen does not send messages.</p>`;
+}
+
+function openReview() {
+  const r = lastResult;
+  if (!r) return;
+  const h = r.customer_history || {};
+  const cust = h.customer || {};
+  const orders = h.orders || [];
+  const returned = orders.filter(o => o.status === 'returned').length;
+  const original = r.message ? r.message.text : '';
+  const channel = r.message ? r.message.channel : 'whatsapp';
+  const reasons = (r.reasons && r.reasons.length)
+    ? `<ul>${r.reasons.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`
+    : '<p class="history-empty">No specific reason recorded.</p>';
+  const score = r.evaluation ? `Evaluator score ${r.evaluation.score}` : 'Not scored by the evaluator';
+
+  reviewPanel.innerHTML = `
+    <div class="review-head">
+      <div>
+        <h2 id="reviewTitle">Review — ${esc(r.customer_id)}</h2>
+        <span class="status needs_human_review">Held for human review</span>
+        <span class="pill">${esc(r.persona || 'no persona')}</span>
+      </div>
+      <button class="icon-btn" id="reviewClose" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="meta-row">
+      <span>City tier <b>${esc(cust.city_tier || '—')}</b></span>
+      <span>App installed <b>${esc(cust.install_date || '—')}</b></span>
+      <span>Orders <b>${orders.length}</b></span>
+      <span>Returned <b>${returned}${orders.length ? ' of ' + orders.length : ''}</b></span>
+      <span>Searches <b>${(h.events || []).length}</b></span>
+    </div>
+    <div class="review-block"><h3>Why it was held</h3>${reasons}<p class="reasons" style="margin:8px 0 0;">${esc(score)}</p></div>
+    <div class="review-block"><h3>Recommended products</h3>${renderSkus(r.recommended_skus) || '<p class="history-empty">None.</p>'}</div>
+    <div class="review-block">
+      <h3>Message to send (${esc(channel)})</h3>
+      <textarea id="reviewDraft" rows="6" maxlength="1000" placeholder="Write the message to send…"></textarea>
+      <div class="editor-foot"><span id="draftMeta"></span><button class="link-btn" id="draftReset" type="button">Reset to original</button></div>
+    </div>
+    ${renderHistory(h)}
+    <div class="review-block">
+      <h3>Reviewer note</h3>
+      <textarea id="reviewNote" rows="2" placeholder="Required if you reject. Optional otherwise."></textarea>
+      <p class="review-error" id="reviewError"></p>
+    </div>
+    <div class="review-actions">
+      <button class="reject" id="reviewReject" type="button">Reject</button>
+      <button class="approve" id="reviewApprove" type="button">Approve</button>
+    </div>`;
+
+  const draft = document.getElementById('reviewDraft');
+  const meta = document.getElementById('draftMeta');
+  draft.value = original;
+  const refreshMeta = () => {
+    const edited = draft.value.trim() !== original.trim();
+    meta.textContent = `${draft.value.length}/1000 characters${edited ? ' · edited' : ''}`;
+  };
+  draft.addEventListener('input', refreshMeta);
+  document.getElementById('draftReset').addEventListener('click', () => { draft.value = original; refreshMeta(); });
+  refreshMeta();
+
+  document.getElementById('reviewClose').addEventListener('click', closeReview);
+  document.getElementById('reviewApprove').addEventListener('click', () => submitReview('approve', original));
+  document.getElementById('reviewReject').addEventListener('click', () => submitReview('reject', original));
+
+  reviewOverlay.classList.add('open');
+  reviewOverlay.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeReview() {
+  reviewOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && reviewOverlay.classList.contains('open')) closeReview();
+});
+
+async function submitReview(action, original) {
+  const draft = document.getElementById('reviewDraft').value;
+  const note = document.getElementById('reviewNote').value;
+  const errEl = document.getElementById('reviewError');
+  const buttons = [document.getElementById('reviewApprove'), document.getElementById('reviewReject')];
+  const fail = (msg) => { errEl.textContent = msg; errEl.style.display = 'block'; };
+
+  errEl.style.display = 'none';
+  if (action === 'approve' && !draft.trim()) return fail('Add a message before approving.');
+  if (action === 'reject' && !note.trim()) return fail('Add a short note on why you are rejecting this.');
+
+  buttons.forEach(b => { b.disabled = true; });
+  try {
+    const res = await fetch('/api/review', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        customer_id: lastResult.customer_id,
+        action,
+        final_message: draft,
+        original_message: original,
+        note,
+      }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(typeof data.detail === 'string' ? data.detail : 'Could not record the decision. Try again.');
+    saveDecision(lastResult.customer_id, { action, edited: data.decision.edited, at: data.decision.logged_at });
+    closeReview();
+    render(lastResult);
+  } catch (e) {
+    fail(e.message);
+    buttons.forEach(b => { b.disabled = false; });
+  }
 }
 
 runBtn.addEventListener('click', async () => {

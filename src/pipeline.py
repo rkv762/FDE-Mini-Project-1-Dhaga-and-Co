@@ -28,7 +28,7 @@ from src.settings import PipelineSettings, model_b_for_attempt
 BLOCKED_PHRASES = ["guaranteed", "100% off", "free gift", "cashback", "lifetime"]
 
 
-def _output_gate(text: str) -> list[str]:
+def output_gate(text: str) -> list[str]:
     lowered = text.lower()
     return [p for p in BLOCKED_PHRASES if p in lowered]
 
@@ -174,7 +174,7 @@ def _run_after_routing(customer_id, history, profile, persona, model_calls: list
         revision_notes = evaluation.revision_notes or "; ".join(evaluation.reasons)
 
     cost = sum(c.estimated_cost_usd for c in model_calls)
-    gate_hits = _output_gate(message.text) if message else []
+    gate_hits = output_gate(message.text) if message else []
     evaluation_failed = evaluation is not None and not (
         evaluation.approved and evaluation.score >= settings.evaluator_threshold
     )

@@ -11,10 +11,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import FileResponse, JSONResponse
 
 from src import chains, data_access, pipeline  # noqa: E402
+from src.review import ReviewError, ReviewRequest, submit_review  # noqa: E402
 from src.settings import ALLOWED_MODELS, PipelineSettings, resolve_model, settings_catalogue  # noqa: E402
 
 app = FastAPI(title="Next Purchase Nudge — Dhaga & Co.")
@@ -82,6 +83,17 @@ def recommend(
     # not take the model's word for it. Pure lookup, no extra model cost.
     payload["customer_history"] = data_access.fetch_customer_history(customer_id)
     return JSONResponse(content=payload, status_code=500 if result.status == "error" else 200)
+
+
+@app.post("/api/review")
+def review(req: ReviewRequest):
+    """Records a reviewer's approve/reject (with any edit to the draft) for a case
+    the pipeline held for human review. Sends nothing."""
+    try:
+        entry = submit_review(req)
+    except ReviewError as exc:
+        raise HTTPException(status_code=422, detail=str(exc))
+    return {"ok": True, "decision": entry}
 
 
 @app.get("/")
